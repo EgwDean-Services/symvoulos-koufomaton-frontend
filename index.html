@@ -15,9 +15,9 @@
 <body>
 
     <!-- ======================================================
-         HEADER
+         HEADER (sticky)
     ====================================================== -->
-    <header>
+    <header id="site-header">
         <nav class="navbar">
             <div class="container">
 
@@ -44,16 +44,78 @@
     </header>
 
     <!-- ======================================================
-         MAIN CONTENT
+         MOBILE SECTION NAV (visible only on small screens,
+         sticky just below the header)
     ====================================================== -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Page sections will be added here -->
-        </div>
-    </main>
+    <div class="mobile-section-nav" id="mobileSectionNav">
+        <button class="mobile-section-nav__toggle" id="mobileSectionToggle"
+                aria-expanded="false" aria-controls="mobileSectionList">
+            <span class="mobile-section-nav__label" id="mobileSectionLabel">Περιεχόμενα</span>
+            <span class="mobile-section-nav__arrow">&#9660;</span>
+        </button>
+        <ul class="mobile-section-nav__list" id="mobileSectionList" hidden>
+            <li><a href="#section-1" class="mobile-section-nav__link">Ενότητα 1</a></li>
+            <li><a href="#section-2" class="mobile-section-nav__link">Ενότητα 2</a></li>
+            <li><a href="#section-3" class="mobile-section-nav__link">Ενότητα 3</a></li>
+        </ul>
+    </div>
 
     <!-- ======================================================
-         FOOTER
+         PAGE BODY: side nav + content
+    ====================================================== -->
+    <div class="page-body">
+
+        <!-- Desktop side nav (hidden on mobile) -->
+        <aside class="side-nav" id="desktopSideNav" aria-label="Πλοήγηση ενοτήτων">
+            <ul class="side-nav__list">
+                <li>
+                    <a href="#section-1" class="side-nav__link" data-target="section-1">Ενότητα 1</a>
+                </li>
+                <li>
+                    <a href="#section-2" class="side-nav__link" data-target="section-2">Ενότητα 2</a>
+                </li>
+                <li>
+                    <a href="#section-3" class="side-nav__link" data-target="section-3">Ενότητα 3</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content" id="mainContent">
+
+            <section id="section-1" class="content-section">
+                <div class="section-box">
+                    <h2 class="section-title">Ενότητα 1</h2>
+                    <div class="section-body">
+                        <p>Περιεχόμενο για την πρώτη ενότητα. Εδώ μπορεί να προστεθεί πληροφορία σχετικά με τις υπηρεσίες ή την εμπειρία.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-2" class="content-section">
+                <div class="section-box">
+                    <h2 class="section-title">Ενότητα 2</h2>
+                    <div class="section-body">
+                        <p>Περιεχόμενο για τη δεύτερη ενότητα. Εδώ μπορεί να προστεθεί πληροφορία σχετικά με τη μεθοδολογία εργασίας.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-3" class="content-section">
+                <div class="section-box">
+                    <h2 class="section-title">Ενότητα 3</h2>
+                    <div class="section-body">
+                        <p>Περιεχόμενο για την τρίτη ενότητα. Εδώ μπορεί να προστεθεί οποιαδήποτε επιπλέον πληροφορία.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div><!-- /.page-body -->
+
+    <!-- ======================================================
+         FOOTER (normal flow – visible on scroll to bottom)
     ====================================================== -->
     <footer>
         <div class="container">
