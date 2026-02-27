@@ -3,26 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ανεξάρτητος Τεχνικός Σύμβουλος Κουφωμάτων</title>
-    
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Πέτρος Χριστόπουλος – Ανεξάρτητος Τεχνικός Σύμβουλος Κουφωμάτων">
+
+    <title>Πέτρος Χριστόπουλος | Σύμβουλος Κουφωμάτων</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- ======================================================
+         HEADER
+    ====================================================== -->
     <header>
-        <h1>Ανεξάρτητος Τεχνικός Σύμβουλος Κουφωμάτων</h1>
-        <p>Δοκιμαστική Σελίδα - Το σύστημα λειτουργεί κανονικά!</p>
+        <nav class="navbar">
+            <div class="container">
+
+                <!-- Logo + name block -->
+                <div class="navbar-brand d-flex align-items-center gap-3 p-0">
+                    <a class="brand-link" href="#">
+                        <img src="assets/logo.png" alt="Λογότυπο" class="logo-img">
+                    </a>
+                    <div class="brand-text">
+                        <span class="brand-name">Πέτρος Χριστόπουλος</span>
+                        <span class="brand-subtitle">Ανεξάρτητος Τεχνικός Σύμβουλος Κουφωμάτων</span>
+                    </div>
+                </div>
+
+                <!-- Nav links -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Επικοινωνία</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <section class="test-section">
-            <h2>Έλεγχος JavaScript</h2>
-            <p>Κάντε κλικ στο παρακάτω κουμπί για να επιβεβαιώσετε ότι το αρχείο script.js έχει συνδεθεί σωστά.</p>
-            <button id="test-btn">Κάνε κλικ εδώ</button>
-            <p id="output-message"></p>
-        </section>
+    <!-- ======================================================
+         MAIN CONTENT
+    ====================================================== -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page sections will be added here -->
+        </div>
     </main>
 
-    <script src="script.js"></script>
+    <!-- ======================================================
+         FOOTER
+    ====================================================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+
+                <!-- Logo box -->
+                <div class="footer-box">
+                    <img src="assets/logo.png" alt="Λογότυπο" class="footer-logo">
+                    <p class="footer-brand-subtitle">Ανεξάρτητος Τεχνικός Σύμβουλος Κουφωμάτων</p>
+                </div>
+
+                <!-- Contact box -->
+                <div class="footer-box">
+                    <p class="footer-box-title">Επικοινωνία</p>
+                    <p class="footer-contact-item">
+                        <a href="tel:6942878713">6942878713</a>
+                    </p>
+                    <p class="footer-contact-item">
+                        <a href="mailto:info@symvoulos-koufomaton.gr">info@symvoulos-koufomaton.gr</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+
 </body>
 </html>
