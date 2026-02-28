@@ -548,6 +548,133 @@ body {
 }
 
 /* ============================================================
+   TRAPS SECTION (Συνήθεις Παγίδες)
+   ============================================================ */
+
+.traps-section-title {
+    margin-bottom: 0.75rem;
+}
+
+.traps-badges {
+    display: flex;
+    justify-content: center;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.9rem;
+}
+
+.traps-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 20px;
+    font-size: 0.80rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.04em;
+}
+
+.traps-lead {
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Trap cards */
+.traps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.trap-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.trap-card:hover {
+    background: rgba(0, 0, 0, 0.35);
+    border-color: rgba(255, 255, 255, 0.20);
+}
+
+.trap-card__num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.trap-card__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.trap-card__title {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+}
+
+.trap-card__desc {
+    font-size: 0.92rem;
+    line-height: 1.60;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0;
+}
+
+.traps-closing {
+    font-size: 0.95rem;
+    line-height: 1.70;
+    color: rgba(255, 255, 255, 0.80);
+    font-style: italic;
+    margin-bottom: 1.25rem;
+    padding-top: 0.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1rem;
+}
+
+.traps-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+}
+
+.traps-cta__text {
+    flex: 1;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 footer {
