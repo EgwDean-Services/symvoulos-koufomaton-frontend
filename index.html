@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Πέτρος Χριστόπουλος – Ανεξάρτητος Τεχνικός Σύμβουλος Κουφωμάτων">
 
-    <title>Πέτρος Χριστόπουλος | Σύμβουλος Κουφωμάτων</title>
+    <!-- Primary SEO -->
+    <title>Ανεξάρτητος Τεχνικός Σύμβουλος Κουφωμάτων</title>
+    <meta name="description" content="Ποια κουφώματα να βάλω · Αλουμίνια: τι να προσέξω · Λάθη στην τοποθέτηση κουφωμάτων · Αγορά κουφωμάτων">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+
+    <!-- Open Graph (εικονίδιο & snippet σε social / search previews) -->
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="Ανεξάρτητος Τεχνικός Σύμβουλος Κουφωμάτων">
+    <meta property="og:description" content="Ποια κουφώματα να βάλω · Αλουμίνια: τι να προσέξω · Λάθη στην τοποθέτηση κουφωμάτων · Αγορά κουφωμάτων">
+    <meta property="og:image"       content="assets/logo.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -364,12 +375,40 @@
             </section>
 
             <section id="section-6" class="content-section">
-                <div class="section-box">
+                <div id="contact-form" class="section-box">
                     <h2 class="section-title">Επικοινωνία</h2>
                     <div class="section-body">
-                        <p>Αν έχετε λάβει προσφορές και θέλετε ανεξάρτητη τεχνική καθοδήγηση, συμπληρώστε τη φόρμα επικοινωνίας.</p>
-                        <p>Θα εξετάσω τα στοιχεία σας και θα σας προτείνω τον κατάλληλο τρόπο αξιολόγησης πριν την τελική σας απόφαση.</p>
-                        <a href="#contact-form" class="contact-btn">Φόρμα Επικοινωνίας</a>
+                        <p>Αν έχετε λάβει προσφορές και θέλετε ανεξάρτητη τεχνική καθοδήγηση, συμπληρώστε τη φόρμα επικοινωνίας. Θα εξετάσω τα στοιχεία σας και θα σας προτείνω τον κατάλληλο τρόπο αξιολόγησης πριν την τελική σας απόφαση.</p>
+
+                        <form class="contact-form" action="#" method="post" novalidate>
+
+                            <div class="cf-field">
+                                <label class="cf-label" for="cf-name">Ονοματεπώνυμο</label>
+                                <input class="cf-input" type="text" id="cf-name" name="name"
+                                       placeholder="Όνομα και επώνυμο" autocomplete="name" required>
+                            </div>
+
+                            <div class="cf-field">
+                                <label class="cf-label" for="cf-email">Email</label>
+                                <input class="cf-input" type="email" id="cf-email" name="email"
+                                       placeholder="example@email.com" autocomplete="email" required>
+                            </div>
+
+                            <div class="cf-field">
+                                <label class="cf-label" for="cf-phone">Τηλέφωνο <span class="cf-optional">(προαιρετικό)</span></label>
+                                <input class="cf-input" type="tel" id="cf-phone" name="phone"
+                                       placeholder="69XXXXXXXX" autocomplete="tel">
+                            </div>
+
+                            <div class="cf-field">
+                                <label class="cf-label" for="cf-message">Κείμενο</label>
+                                <textarea class="cf-input cf-textarea" id="cf-message" name="message"
+                                          placeholder="Περιγράψτε συνοπτικά τι έχετε στα χέρια σας (προσφορές, ερωτήσεις, στάδιο εργασίας…)" rows="5" required></textarea>
+                            </div>
+
+                            <button type="submit" class="cf-submit">Αποστολή</button>
+
+                        </form>
                     </div>
                 </div>
             </section>
