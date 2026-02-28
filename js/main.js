@@ -113,18 +113,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ============================================================
-       5. Background image carousel (slides every 5 s, loops)
+       5. Background image carousel – always slides right, seamless
+          loop via clone technique. Advances every 7 s.
     ============================================================ */
-    const bgStrip = document.getElementById('bgCarouselStrip');
-    const bgTotal = 5;
-    let bgIndex   = 0;
+    const bgStrip    = document.getElementById('bgCarouselStrip');
+    const bgTotal    = 5;          // number of real slides
+    const bgStep     = 100 / 6;    // each slide = 1/6 of the 600%-wide strip
+    const bgDuration = 1800;       // ms – must match CSS transition
+    let   bgIndex    = 0;
+    let   bgLocked   = false;
+
+    function bgAdvance() {
+        if (bgLocked) return;
+        bgIndex++;
+        bgStrip.style.transition = `transform ${bgDuration}ms ease-in-out`;
+        bgStrip.style.transform  = `translateX(-${bgIndex * bgStep}%)`;
+
+        // When we land on the clone of frame_1 (index 5),
+        // silently jump back to index 0 after the transition finishes.
+        if (bgIndex === bgTotal) {
+            bgLocked = true;
+            setTimeout(() => {
+                bgStrip.style.transition = 'none';
+                bgStrip.style.transform  = 'translateX(0%)';
+                bgIndex  = 0;
+                // Force reflow so the next transition isn't skipped
+                void bgStrip.offsetWidth;
+                bgStrip.style.transition = `transform ${bgDuration}ms ease-in-out`;
+                bgLocked = false;
+            }, bgDuration + 50);
+        }
+    }
 
     if (bgStrip) {
-        setInterval(() => {
-            bgIndex = (bgIndex + 1) % bgTotal;
-            // Each slide occupies 20% of the 500%-wide strip
-            bgStrip.style.transform = `translateX(-${bgIndex * 20}%)`;
-        }, 5000);
+        setInterval(bgAdvance, 7000);
     }
 
 });
