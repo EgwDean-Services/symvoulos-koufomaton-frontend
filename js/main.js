@@ -53,9 +53,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close dropdown when a link is clicked
         mobileList.querySelectorAll('.mobile-section-nav__link').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+
+                // Close dropdown first
                 mobileToggle.setAttribute('aria-expanded', 'false');
                 mobileList.hidden = true;
+
+                // Recalculate heights now that the dropdown is closed,
+                // then scroll so the section lands below the actual sticky bars.
+                setHeightVars();
+                requestAnimationFrame(() => {
+                    const target = document.querySelector(targetId);
+                    if (!target) return;
+                    const headerH    = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'))    || 80;
+                    const mobileNavH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--mobile-nav-h')) || 44;
+                    const offset     = target.getBoundingClientRect().top + window.scrollY - headerH - mobileNavH - 16;
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                });
             });
         });
     }
