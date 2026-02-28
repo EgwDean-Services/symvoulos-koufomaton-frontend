@@ -15,6 +15,19 @@
 <body>
 
     <!-- ======================================================
+         BACKGROUND CAROUSEL (fixed, behind everything)
+    ====================================================== -->
+    <div id="bg-carousel" aria-hidden="true">
+        <div class="bg-carousel__strip" id="bgCarouselStrip">
+            <div class="bg-carousel__slide"><img src="assets/carousel/frame_1.png" alt=""></div>
+            <div class="bg-carousel__slide"><img src="assets/carousel/frame_2.png" alt=""></div>
+            <div class="bg-carousel__slide"><img src="assets/carousel/frame_3.png" alt=""></div>
+            <div class="bg-carousel__slide"><img src="assets/carousel/frame_4.png" alt=""></div>
+            <div class="bg-carousel__slide"><img src="assets/carousel/frame_5.png" alt=""></div>
+        </div>
+    </div>
+
+    <!-- ======================================================
          HEADER (sticky)
     ====================================================== -->
     <header id="site-header">
@@ -54,9 +67,12 @@
             <span class="mobile-section-nav__arrow">&#9660;</span>
         </button>
         <ul class="mobile-section-nav__list" id="mobileSectionList" hidden>
-            <li><a href="#section-1" class="mobile-section-nav__link">Ενότητα 1</a></li>
-            <li><a href="#section-2" class="mobile-section-nav__link">Ενότητα 2</a></li>
-            <li><a href="#section-3" class="mobile-section-nav__link">Ενότητα 3</a></li>
+            <li><a href="#section-1" class="mobile-section-nav__link">Σωστή Επιλογή</a></li>
+            <li><a href="#section-2" class="mobile-section-nav__link">Σε ποιους απευθύνομαι</a></li>
+            <li><a href="#section-3" class="mobile-section-nav__link">Τι περιλαμβάνει</a></li>
+            <li><a href="#section-4" class="mobile-section-nav__link">Διαδικασία</a></li>
+            <li><a href="#section-5" class="mobile-section-nav__link">Για εμένα</a></li>
+            <li><a href="#section-6" class="mobile-section-nav__link">Επικοινωνία</a></li>
         </ul>
     </div>
 
@@ -69,13 +85,22 @@
         <aside class="side-nav" id="desktopSideNav" aria-label="Πλοήγηση ενοτήτων">
             <ul class="side-nav__list">
                 <li>
-                    <a href="#section-1" class="side-nav__link" data-target="section-1">Ενότητα 1</a>
+                    <a href="#section-1" class="side-nav__link" data-target="section-1">Σωστή επιλογή</a>
                 </li>
                 <li>
-                    <a href="#section-2" class="side-nav__link" data-target="section-2">Ενότητα 2</a>
+                    <a href="#section-2" class="side-nav__link" data-target="section-2">Σε ποιους απευθύνομαι</a>
                 </li>
                 <li>
-                    <a href="#section-3" class="side-nav__link" data-target="section-3">Ενότητα 3</a>
+                    <a href="#section-3" class="side-nav__link" data-target="section-3">Τι περιλαμβάνει</a>
+                </li>
+                <li>
+                    <a href="#section-4" class="side-nav__link" data-target="section-4">Διαδικασία</a>
+                </li>
+                <li>
+                    <a href="#section-5" class="side-nav__link" data-target="section-5">Για εμένα</a>
+                </li>
+                <li>
+                    <a href="#section-6" class="side-nav__link" data-target="section-6">Επικοινωνία</a>
                 </li>
             </ul>
         </aside>
@@ -85,32 +110,101 @@
 
             <section id="section-1" class="content-section">
                 <div class="section-box">
-                    <h2 class="section-title">Ενότητα 1</h2>
+                    <h2 class="section-title">Πριν υπογράψετε, βεβαιωθείτε ότι η επιλογή σας είναι σωστή</h2>
                     <div class="section-body">
-                        <p>Περιεχόμενο για την πρώτη ενότητα. Εδώ μπορεί να προστεθεί πληροφορία σχετικά με τις υπηρεσίες ή την εμπειρία.</p>
+                        <p>Η αντικατάσταση ή η τοποθέτηση κουφωμάτων είναι σημαντική επένδυση για το σπίτι σας. Προσφορές που φαίνονται ισοδύναμες μπορεί να έχουν τεχνικές διαφορές ή κενά που κοστίζουν χιλιάδες ευρώ. Στόχος μου είναι να σας παρέχω ανεξάρτητη τεχνική καθοδήγηση, ώστε να λάβετε τεκμηριωμένη και ασφαλή απόφαση.</p>
                     </div>
                 </div>
             </section>
 
             <section id="section-2" class="content-section">
                 <div class="section-box">
-                    <h2 class="section-title">Ενότητα 2</h2>
+                    <h2 class="section-title">Σε ποιους απευθύνομαι</h2>
                     <div class="section-body">
-                        <p>Περιεχόμενο για τη δεύτερη ενότητα. Εδώ μπορεί να προστεθεί πληροφορία σχετικά με τη μεθοδολογία εργασίας.</p>
+                        <p>Η υπηρεσία απευθύνεται σε ιδιώτες που:</p>
+                        <ul class="section-list">
+                            <li>Έχουν λάβει 1–3 προσφορές κουφωμάτων</li>
+                            <li>Θέλουν να συγκρίνουν αντικειμενικά λεπτομέρειες</li>
+                            <li>Επιθυμούν να αποφύγουν περιττά έξοδα και τεχνικές αστοχίες</li>
+                            <li>Ζητούν ανεξάρτητη γνώμη πριν δεσμευτούν οικονομικά</li>
+                        </ul>
+
+                        <div class="info-cards">
+                            <div class="info-card">
+                                <img src="assets/icons/attention.png" alt="" class="info-card__icon">
+                                <p class="info-card__text">Δεν πουλάω κουφώματα</p>
+                            </div>
+                            <div class="info-card">
+                                <img src="assets/icons/attention.png" alt="" class="info-card__icon">
+                                <p class="info-card__text">Δεν προωθώ συγκεκριμένες εταιρείες</p>
+                            </div>
+                            <div class="info-card">
+                                <img src="assets/icons/attention.png" alt="" class="info-card__icon">
+                                <p class="info-card__text">Γίνεται αξιολόγηση αποκλειστικά στα τεχνικά δεδομένα και στην εμπειρία του πεδίου.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section id="section-3" class="content-section">
                 <div class="section-box">
-                    <h2 class="section-title">Ενότητα 3</h2>
+                    <h2 class="section-title">Τι περιλαμβάνει η καθοδήγηση</h2>
                     <div class="section-body">
-                        <p>Περιεχόμενο για την τρίτη ενότητα. Εδώ μπορεί να προστεθεί οποιαδήποτε επιπλέον πληροφορία.</p>
+                        <p>Ανάλογα με το πακέτο που θα επιλέξετε παρέχεται:</p>
+                        <ul class="section-list">
+                            <li>Ανάλυση και έλεγχος προσφορών</li>
+                            <li>Σύγκριση 2–3 προσφορών όπου χρειάζεται</li>
+                            <li>Επισήμανση πιθανών τεχνικών ή οικονομικών ρίσκων</li>
+                            <li>Γραπτή αξιολόγηση (PDF) με σαφείς συστάσεις</li>
+                            <li>Τηλεφωνική συζήτηση για διευκρινήσεις</li>
+                            <li>Καθοδήγηση πριν την τελική υπογραφή</li>
+                            <li>Αυτοψία και παρακολούθηση έως την παράδοση του έργου</li>
+                        </ul>
+                        <p class="section-note">Στόχος μου δεν είναι να απορριφθεί μια εταιρεία, αλλά να διασφαλιστεί ότι η επιλογή σας είναι σωστή, ασφαλής και τεκμηριωμένη.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-4" class="content-section">
+                <div class="section-box">
+                    <h2 class="section-title">Διαδικασία</h2>
+                    <div class="section-body">
+                        <ol class="section-steps">
+                            <li>Στέλνετε τις προσφορές και τα βασικά στοιχεία του έργου</li>
+                            <li>Επιλέγουμε το κατάλληλο πακέτο αξιολόγησης</li>
+                            <li>Πραγματοποιείται η ανάλυση</li>
+                            <li>Λαμβάνετε γραπτή αξιολόγηση και πραγματοποιούμε τηλεφωνική συζήτηση για κάθε διευκρίνηση.</li>
+                        </ol>
+                        <p class="section-note">Με αυτόν τον τρόπο, πριν καταθέσετε προκαταβολή, γνωρίζετε ακριβώς τι υπογράψατε.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-5" class="content-section">
+                <div class="section-box">
+                    <h2 class="section-title">Λίγα λόγια για εμένα</h2>
+                    <div class="section-body">
+                        <p>Είμαι πωλητής – εργοδηγός με πάνω από 25 χρόνια εμπειρίας σε κουφώματα αλουμινίου – PVC. Έχω δει από κοντά όλες τις συνήθεις αστοχίες, τα τεχνικά λάθη και τις κρυφές παγίδες που μπορεί να κοστίσουν χιλιάδες ευρώ στους ιδιώτες. Η καθοδήγηση που παρέχω είναι πρακτική, τεχνική και ανεξάρτητη. Δε βασίζεται σε θεωρία ή γενικές οδηγίες, αλλά σε πραγματική εμπειρία επιπέδου.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-6" class="content-section">
+                <div class="section-box">
+                    <h2 class="section-title">Επικοινωνία</h2>
+                    <div class="section-body">
+                        <p>Αν έχετε λάβει προσφορές και θέλετε ανεξάρτητη τεχνική καθοδήγηση, συμπληρώστε τη φόρμα επικοινωνίας.</p>
+                        <p>Θα εξετάσω τα στοιχεία σας και θα σας προτείνω τον κατάλληλο τρόπο αξιολόγησης πριν την τελική σας απόφαση.</p>
+                        <a href="#contact-form" class="contact-btn">Φόρμα Επικοινωνίας</a>
                     </div>
                 </div>
             </section>
 
         </main>
+
+        <!-- Spacer to visually balance the side nav and centre the content -->
+        <div class="side-nav-spacer" aria-hidden="true"></div>
 
     </div><!-- /.page-body -->
 

@@ -7,6 +7,36 @@
     padding: 0;
 }
 
+/* ============================================================
+   BACKGROUND CAROUSEL
+   ============================================================ */
+#bg-carousel {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-carousel__strip {
+    display: flex;
+    width: 500%;
+    height: 100%;
+    transition: transform 0.9s ease-in-out;
+}
+
+.bg-carousel__slide {
+    width: 20%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.bg-carousel__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 :root {
     --color-primary:      #1a4f8a;
     --color-primary-dark: #12376b;
@@ -126,7 +156,7 @@ header {
    by the body itself — the page-body fills remaining space instead */
 body {
     font-family: var(--font-sans);
-    background-color: var(--color-white);
+    background-color: #1a1a1a;
     color: #333333;
     display: flex;
     flex-direction: column;
@@ -141,6 +171,11 @@ body {
     gap: 2rem;
 }
 
+.side-nav-spacer {
+    width: 200px;
+    flex-shrink: 0;
+}
+
 /* ============================================================
    DESKTOP SIDE NAV
    ============================================================ */
@@ -150,6 +185,9 @@ body {
     position: sticky;
     top: calc(var(--header-h, 80px) + 1.5rem);
     align-self: flex-start;
+    background: rgba(0, 0, 0, 0.38);
+    border-radius: 8px;
+    padding: 0.4rem 0;
 }
 
 .side-nav__list {
@@ -166,7 +204,7 @@ body {
     padding: 0.5rem 0.9rem;
     font-size: 0.88rem;
     font-weight: 500;
-    color: #555;
+    color: rgba(255, 255, 255, 0.80);
     text-decoration: none;
     border-left: 3px solid transparent;
     border-radius: 0 4px 4px 0;
@@ -174,16 +212,16 @@ body {
 }
 
 .side-nav__link:hover {
-    color: var(--color-primary);
-    background-color: rgba(26, 79, 138, 0.06);
-    border-left-color: rgba(26, 79, 138, 0.35);
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-left-color: rgba(255, 255, 255, 0.45);
 }
 
 .side-nav__link.is-active {
-    color: var(--color-primary);
+    color: #ffffff;
     font-weight: 700;
-    border-left-color: var(--color-primary);
-    background-color: rgba(26, 79, 138, 0.08);
+    border-left-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.18);
 }
 
 /* ============================================================
@@ -265,27 +303,121 @@ body {
 }
 
 .section-box {
-    background-color: var(--color-white);
-    border: 1px solid #e0e6ee;
+    background-color: rgba(60, 60, 60, 0.50);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 12px;
     padding: 2rem 2.5rem;
-    box-shadow: 0 2px 12px rgba(26, 79, 138, 0.07);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
 .section-title {
     font-size: 1.35rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: #ffffff;
     text-align: center;
     margin-bottom: 1.25rem;
     padding-bottom: 0.75rem;
-    border-bottom: 2px solid rgba(26, 79, 138, 0.12);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
 }
 
 .section-body {
     font-size: 0.97rem;
     line-height: 1.75;
-    color: #444;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* ============================================================
+   SECTION LIST
+   ============================================================ */
+.section-list {
+    margin: 0.75rem 0 0 1.25rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.97rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.90);
+}
+
+.section-steps {
+    margin: 0.75rem 0 0 1.25rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    font-size: 0.97rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.90);
+}
+
+.section-steps li {
+    padding-left: 0.25rem;
+}
+
+.section-note {
+    margin-top: 1.1rem;
+    font-size: 0.92rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.6;
+}
+
+/* Contact button (Section 6) */
+.contact-btn {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.65rem 1.6rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.contact-btn:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+/* ============================================================
+   INFO CARDS (Section 2)
+   ============================================================ */
+.info-cards {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.info-card {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.30);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    padding: 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+}
+
+.info-card__icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.info-card__text {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.45;
+    margin: 0;
 }
 
 /* ============================================================
@@ -393,6 +525,10 @@ footer {
         display: none;
     }
 
+    .side-nav-spacer {
+        display: none;
+    }
+
     /* Content takes ~95% width */
     .page-body {
         padding: 1.5rem 0.75rem 2.5rem;
@@ -412,6 +548,10 @@ footer {
 
     .section-box {
         padding: 1.5rem 1.25rem;
+    }
+
+    .info-cards {
+        flex-direction: column;
     }
 
     /* Header */

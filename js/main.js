@@ -112,4 +112,19 @@ document.addEventListener('DOMContentLoaded', () => {
         setActiveSection(sections[0].id);
     }
 
+    /* ============================================================
+       5. Background image carousel (slides every 5 s, loops)
+    ============================================================ */
+    const bgStrip = document.getElementById('bgCarouselStrip');
+    const bgTotal = 5;
+    let bgIndex   = 0;
+
+    if (bgStrip) {
+        setInterval(() => {
+            bgIndex = (bgIndex + 1) % bgTotal;
+            // Each slide occupies 20% of the 500%-wide strip
+            bgStrip.style.transform = `translateX(-${bgIndex * 20}%)`;
+        }, 5000);
+    }
+
 });
