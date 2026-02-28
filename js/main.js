@@ -3,18 +3,18 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ============================================================
-       1. Track header (and mobile nav) height as CSS variables
-          so sticky offsets are always accurate.
+       1. Track header (and mobile nav toggle) height as CSS variables
+       FIX: Measure only the toggle bar, not the whole open list!
     ============================================================ */
     const header       = document.getElementById('site-header');
-    const mobileNavBar = document.getElementById('mobileSectionNav');
+    const mobileToggle = document.getElementById('mobileSectionToggle');
 
     function setHeightVars() {
         const hh = header ? header.offsetHeight : 80;
         document.documentElement.style.setProperty('--header-h', hh + 'px');
 
-        if (mobileNavBar) {
-            const mh = mobileNavBar.offsetHeight;
+        if (mobileToggle) {
+            const mh = mobileToggle.offsetHeight;
             document.documentElement.style.setProperty('--mobile-nav-h', mh + 'px');
         }
     }
@@ -33,48 +33,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ============================================================
-       3. Mobile section nav dropdown toggle
+       3. Mobile section nav dropdown toggle & Smooth Scrolling
     ============================================================ */
-    const mobileToggle = document.getElementById('mobileSectionToggle');
-    const mobileList   = document.getElementById('mobileSectionList');
+    const mobileList = document.getElementById('mobileSectionList');
 
     if (mobileToggle && mobileList) {
+        // Handle opening/closing the menu
         mobileToggle.addEventListener('click', () => {
             const isOpen = mobileToggle.getAttribute('aria-expanded') === 'true';
             mobileToggle.setAttribute('aria-expanded', String(!isOpen));
-            if (isOpen) {
-                mobileList.hidden = true;
-            } else {
-                mobileList.hidden = false;
-                // Update mobile nav height var after list opens
-                setTimeout(setHeightVars, 10);
-            }
-        });
-
-        // Close dropdown when a link is clicked
-        mobileList.querySelectorAll('.mobile-section-nav__link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-
-                // Close dropdown first
-                mobileToggle.setAttribute('aria-expanded', 'false');
-                mobileList.hidden = true;
-
-                // Recalculate heights now that the dropdown is closed,
-                // then scroll so the section lands below the actual sticky bars.
-                setHeightVars();
-                requestAnimationFrame(() => {
-                    const target = document.querySelector(targetId);
-                    if (!target) return;
-                    const headerH    = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'))    || 80;
-                    const mobileNavH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--mobile-nav-h')) || 44;
-                    const offset     = target.getBoundingClientRect().top + window.scrollY - headerH - mobileNavH - 16;
-                    window.scrollTo({ top: offset, behavior: 'smooth' });
-                });
-            });
+            mobileList.hidden = isOpen;
         });
     }
+
+    // Handle all anchor links to scroll smoothly and accurately
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const target = document.querySelector(targetId);
+            if (!target) return;
+
+            e.preventDefault();
+
+            // If it's a mobile link, close the menu first
+            if (this.classList.contains('mobile-section-nav__link') && mobileToggle && mobileList) {
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                mobileList.hidden = true;
+            }
+
+            // Calculate exact position: Target top + Current Scroll - Header Heights
+            const headerH = header ? header.offsetHeight : 0;
+            const mobileNavH = (mobileToggle && window.innerWidth <= 767) ? mobileToggle.offsetHeight : 0;
+            const offset = headerH + mobileNavH + 20; // 20px extra breathing room
+
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        });
+    });
 
     /* ============================================================
        4. Active section highlighting via IntersectionObserver
@@ -85,15 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileLabel    = document.getElementById('mobileSectionLabel');
 
     function setActiveSection(id) {
-        // Desktop side nav
         desktopLinks.forEach(link => {
             link.classList.toggle('is-active', link.getAttribute('data-target') === id);
         });
 
-        // Mobile nav links + dropdown label
         mobileLinks.forEach(link => {
-            const href    = link.getAttribute('href'); // e.g. "#section-1"
-            const matches = href === '#' + id;
+            const href = link.getAttribute('href');
+            const matches = (href === '#' + id);
             link.classList.toggle('is-active', matches);
             if (matches && mobileLabel) {
                 mobileLabel.textContent = link.textContent.trim();
@@ -101,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Use a map to track which sections are currently intersecting
     const visibleSections = new Map();
 
     const observer = new IntersectionObserver(entries => {
@@ -109,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
             visibleSections.set(entry.target.id, entry.isIntersecting);
         });
 
-        // Highlight the topmost currently visible section
         for (const section of sections) {
             if (visibleSections.get(section.id)) {
                 setActiveSection(section.id);
@@ -117,13 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }, {
-        rootMargin: '-10% 0px -60% 0px',
+        // Ignores the top portion of the screen covered by sticky headers
+        rootMargin: '-150px 0px -60% 0px',
         threshold: 0
     });
 
     sections.forEach(section => observer.observe(section));
 
-    // Activate first section by default
     if (sections.length > 0) {
         setActiveSection(sections[0].id);
     }
@@ -138,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
         tab.addEventListener('click', () => {
             const idx = parseInt(tab.dataset.pkg, 10);
 
-            // Update tab active state
             pkgTabs.forEach(t => {
                 t.classList.remove('is-active');
                 t.setAttribute('aria-selected', 'false');
@@ -146,42 +142,40 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.classList.add('is-active');
             tab.setAttribute('aria-selected', 'true');
 
-            // Slide the strip
             if (pkgStrip) {
-                // Each panel = 1/3 of the 300%-wide strip → offset = idx * (100/3)%
                 pkgStrip.style.transform = `translateX(-${idx * (100 / 3)}%)`;
             }
         });
     });
 
     /* ============================================================
-       6. Background image carousel – always slides right, seamless
-          loop via clone technique. Advances every 7 s.
+       6. Background image carousel
     ============================================================ */
     const bgStrip    = document.getElementById('bgCarouselStrip');
-    const bgTotal    = 5;          // number of real slides
-    const bgStep     = 100 / 6;    // each slide = 1/6 of the 600%-wide strip
-    const bgDuration = 1800;       // ms – must match CSS transition
+    const bgTotal    = 5;
+    const bgStep     = 100 / 6;
+    const bgDuration = 1800;
     let   bgIndex    = 0;
     let   bgLocked   = false;
 
     function bgAdvance() {
         if (bgLocked) return;
         bgIndex++;
-        bgStrip.style.transition = `transform ${bgDuration}ms ease-in-out`;
-        bgStrip.style.transform  = `translateX(-${bgIndex * bgStep}%)`;
+        if(bgStrip) {
+            bgStrip.style.transition = `transform ${bgDuration}ms ease-in-out`;
+            bgStrip.style.transform  = `translateX(-${bgIndex * bgStep}%)`;
+        }
 
-        // When we land on the clone of frame_1 (index 5),
-        // silently jump back to index 0 after the transition finishes.
         if (bgIndex === bgTotal) {
             bgLocked = true;
             setTimeout(() => {
-                bgStrip.style.transition = 'none';
-                bgStrip.style.transform  = 'translateX(0%)';
-                bgIndex  = 0;
-                // Force reflow so the next transition isn't skipped
-                void bgStrip.offsetWidth;
-                bgStrip.style.transition = `transform ${bgDuration}ms ease-in-out`;
+                if(bgStrip) {
+                    bgStrip.style.transition = 'none';
+                    bgStrip.style.transform  = 'translateX(0%)';
+                    bgIndex  = 0;
+                    void bgStrip.offsetWidth;
+                    bgStrip.style.transition = `transform ${bgDuration}ms ease-in-out`;
+                }
                 bgLocked = false;
             }, bgDuration + 50);
         }
@@ -190,5 +184,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bgStrip) {
         setInterval(bgAdvance, 7000);
     }
-
 });
