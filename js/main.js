@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ============================================================
        1. Track header (and mobile nav toggle) height as CSS variables
-       FIX: Measure only the toggle bar, not the whole open list!
+       FIX: Measure only the toggle bar, not the whole open list
     ============================================================ */
-    const header       = document.getElementById('site-header');
+    const header = document.getElementById('site-header');
     const mobileToggle = document.getElementById('mobileSectionToggle');
 
     function setHeightVars() {
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle all anchor links to scroll smoothly and accurately
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
 
@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ============================================================
        4. Active section highlighting via IntersectionObserver
     ============================================================ */
-    const sections       = document.querySelectorAll('.content-section');
-    const desktopLinks   = document.querySelectorAll('.side-nav__link');
-    const mobileLinks    = document.querySelectorAll('.mobile-section-nav__link');
-    const mobileLabel    = document.getElementById('mobileSectionLabel');
+    const sections = document.querySelectorAll('.content-section');
+    const desktopLinks = document.querySelectorAll('.side-nav__link');
+    const mobileLinks = document.querySelectorAll('.mobile-section-nav__link');
+    const mobileLabel = document.getElementById('mobileSectionLabel');
 
     function setActiveSection(id) {
         desktopLinks.forEach(link => {
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
        5. Package tab selector
     ============================================================ */
     const pkgStrip = document.getElementById('pkgStrip');
-    const pkgTabs  = document.querySelectorAll('.pkg-tab');
+    const pkgTabs = document.querySelectorAll('.pkg-tab');
 
     pkgTabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -151,28 +151,28 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ============================================================
        6. Background image carousel
     ============================================================ */
-    const bgStrip    = document.getElementById('bgCarouselStrip');
-    const bgTotal    = 5;
-    const bgStep     = 100 / 6;
+    const bgStrip = document.getElementById('bgCarouselStrip');
+    const bgTotal = 5;
+    const bgStep = 100 / 6;
     const bgDuration = 1800;
-    let   bgIndex    = 0;
-    let   bgLocked   = false;
+    let bgIndex = 0;
+    let bgLocked = false;
 
     function bgAdvance() {
         if (bgLocked) return;
         bgIndex++;
-        if(bgStrip) {
+        if (bgStrip) {
             bgStrip.style.transition = `transform ${bgDuration}ms ease-in-out`;
-            bgStrip.style.transform  = `translateX(-${bgIndex * bgStep}%)`;
+            bgStrip.style.transform = `translateX(-${bgIndex * bgStep}%)`;
         }
 
         if (bgIndex === bgTotal) {
             bgLocked = true;
             setTimeout(() => {
-                if(bgStrip) {
+                if (bgStrip) {
                     bgStrip.style.transition = 'none';
-                    bgStrip.style.transform  = 'translateX(0%)';
-                    bgIndex  = 0;
+                    bgStrip.style.transform = 'translateX(0%)';
+                    bgIndex = 0;
                     void bgStrip.offsetWidth;
                     bgStrip.style.transition = `transform ${bgDuration}ms ease-in-out`;
                 }
