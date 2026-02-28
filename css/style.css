@@ -373,17 +373,19 @@ body {
     display: inline-block;
     margin-top: 1.25rem;
     padding: 0.65rem 1.6rem;
-    background-color: var(--color-primary);
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     color: var(--color-white);
     font-size: 0.95rem;
     font-weight: 600;
     border-radius: 6px;
     text-decoration: none;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .contact-btn:hover {
-    background-color: var(--color-primary-dark);
+    background-color: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.60);
     color: var(--color-white);
 }
 
@@ -421,6 +423,128 @@ body {
     color: rgba(255, 255, 255, 0.92);
     line-height: 1.45;
     margin: 0;
+}
+
+/* ============================================================
+   PACKAGE SELECTOR (Section Πακέτα)
+   ============================================================ */
+
+/* Tab row */
+.pkg-tabs {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.pkg-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.75rem 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.65);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.pkg-tab__icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    opacity: 0.70;
+    transition: opacity 0.2s ease;
+}
+
+.pkg-tab:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.90);
+}
+
+.pkg-tab.is-active {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+}
+
+.pkg-tab.is-active .pkg-tab__icon {
+    opacity: 1;
+}
+
+/* Sliding viewport */
+.pkg-viewport {
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+}
+
+.pkg-strip {
+    display: flex;
+    width: 300%;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pkg-panel {
+    width: calc(100% / 3);
+    flex-shrink: 0;
+    padding: 1.25rem 1.5rem;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 8px;
+}
+
+.pkg-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+.pkg-sub {
+    font-size: 0.90rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.70);
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pkg-value-label {
+    margin-top: 1rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pkg-value {
+    margin-top: 0.3rem;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.55;
+}
+
+/* Always-visible notes */
+.pkg-notes {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 1rem;
+}
+
+.pkg-notes__title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 0.5rem;
 }
 
 /* ============================================================
@@ -557,6 +681,24 @@ footer {
 
     .info-cards {
         flex-direction: column;
+    }
+
+    .pkg-tabs {
+        gap: 0.4rem;
+    }
+
+    .pkg-tab {
+        font-size: 0.78rem;
+        padding: 0.6rem 0.3rem;
+    }
+
+    .pkg-tab__icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .pkg-panel {
+        padding: 1rem;
     }
 
     /* Header */

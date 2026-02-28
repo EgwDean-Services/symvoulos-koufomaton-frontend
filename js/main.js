@@ -113,7 +113,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ============================================================
-       5. Background image carousel – always slides right, seamless
+       5. Package tab selector
+    ============================================================ */
+    const pkgStrip = document.getElementById('pkgStrip');
+    const pkgTabs  = document.querySelectorAll('.pkg-tab');
+
+    pkgTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const idx = parseInt(tab.dataset.pkg, 10);
+
+            // Update tab active state
+            pkgTabs.forEach(t => {
+                t.classList.remove('is-active');
+                t.setAttribute('aria-selected', 'false');
+            });
+            tab.classList.add('is-active');
+            tab.setAttribute('aria-selected', 'true');
+
+            // Slide the strip
+            if (pkgStrip) {
+                // Each panel = 1/3 of the 300%-wide strip → offset = idx * (100/3)%
+                pkgStrip.style.transform = `translateX(-${idx * (100 / 3)}%)`;
+            }
+        });
+    });
+
+    /* ============================================================
+       6. Background image carousel – always slides right, seamless
           loop via clone technique. Advances every 7 s.
     ============================================================ */
     const bgStrip    = document.getElementById('bgCarouselStrip');

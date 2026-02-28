@@ -72,6 +72,7 @@
             <li><a href="#section-1" class="mobile-section-nav__link">Σωστή Επιλογή</a></li>
             <li><a href="#section-2" class="mobile-section-nav__link">Σε ποιους απευθύνομαι</a></li>
             <li><a href="#section-3" class="mobile-section-nav__link">Τι περιλαμβάνει</a></li>
+            <li><a href="#section-paketa" class="mobile-section-nav__link">Πακέτα</a></li>
             <li><a href="#section-4" class="mobile-section-nav__link">Διαδικασία</a></li>
             <li><a href="#section-5" class="mobile-section-nav__link">Για εμένα</a></li>
             <li><a href="#section-6" class="mobile-section-nav__link">Επικοινωνία</a></li>
@@ -94,6 +95,9 @@
                 </li>
                 <li>
                     <a href="#section-3" class="side-nav__link" data-target="section-3">Τι περιλαμβάνει</a>
+                </li>
+                <li>
+                    <a href="#section-paketa" class="side-nav__link" data-target="section-paketa">Πακέτα</a>
                 </li>
                 <li>
                     <a href="#section-4" class="side-nav__link" data-target="section-4">Διαδικασία</a>
@@ -165,6 +169,95 @@
                         </ul>
                         <p class="section-note">Στόχος μου δεν είναι να απορριφθεί μια εταιρεία, αλλά να διασφαλιστεί ότι η επιλογή σας είναι σωστή, ασφαλής και τεκμηριωμένη.</p>
                     </div>
+                </div>
+            </section>
+
+            </section>
+
+            <!-- ============ ΠΑΚΕΤΑ ============ -->
+            <section id="section-paketa" class="content-section">
+                <div class="section-box">
+                    <h2 class="section-title">Πακέτα</h2>
+
+                    <!-- Tab buttons -->
+                    <div class="pkg-tabs" role="tablist">
+                        <button class="pkg-tab is-active" data-pkg="0" role="tab" aria-selected="true">
+                            <img src="assets/icons/magnifying_glass.png" alt="" class="pkg-tab__icon">
+                            <span>Πακέτο 1</span>
+                        </button>
+                        <button class="pkg-tab" data-pkg="1" role="tab" aria-selected="false">
+                            <img src="assets/icons/scale.png" alt="" class="pkg-tab__icon">
+                            <span>Πακέτο 2</span>
+                        </button>
+                        <button class="pkg-tab" data-pkg="2" role="tab" aria-selected="false">
+                            <img src="assets/icons/writing.png" alt="" class="pkg-tab__icon">
+                            <span>Πακέτο 3</span>
+                        </button>
+                    </div>
+
+                    <!-- Sliding panel viewport -->
+                    <div class="pkg-viewport">
+                        <div class="pkg-strip" id="pkgStrip">
+
+                            <!-- Panel 0 -->
+                            <div class="pkg-panel" role="tabpanel">
+                                <p class="pkg-name">Πακέτο 1 – Έλεγχος Προσφοράς</p>
+                                <p class="pkg-sub">Τι περιλαμβάνει:</p>
+                                <ul class="section-list">
+                                    <li>Τεχνική ανάλυση της προσφοράς</li>
+                                    <li>Έλεγχος πληρότητας και τυχών παραλείψεων</li>
+                                    <li>Επισήμανση πιθανών ρίσκων</li>
+                                    <li>Γραπτή Αξιολόγηση PDF</li>
+                                    <li>Τηλεφωνική συζήτηση για διευκρινήσεις</li>
+                                </ul>
+                                <p class="pkg-value-label">Αξία για τον πελάτη:</p>
+                                <p class="pkg-value">Γνωρίζετε ακριβώς τι περιλαμβάνει η προσφορά σας και αν πληροί τις τεχνικές απαιτήσεις.</p>
+                            </div>
+
+                            <!-- Panel 1 -->
+                            <div class="pkg-panel" role="tabpanel">
+                                <p class="pkg-name">Πακέτο 2 – Σύγκριση 2–3 προσφορών</p>
+                                <p class="pkg-sub">Τι περιλαμβάνει:</p>
+                                <ul class="section-list">
+                                    <li>Ανάλυση και σύγκριση 2–3 προσφορών</li>
+                                    <li>Πίνακας αντικειμενικής σύγκρισης τεχνικών</li>
+                                    <li>Προτεινόμενη επιλογή με σαφείς λόγους</li>
+                                    <li>Επισημανσές για πιθανά ρίσκα και παραλείψεις</li>
+                                    <li>Τηλεφωνική συζήτηση για διευκρινήσεις</li>
+                                </ul>
+                                <p class="pkg-value-label">Αξία για τον πελάτη:</p>
+                                <p class="pkg-value">Ξέρετε ποια πρόσφορά ανταποκρίνεται καλύτερα στις ανάγκες σας και τι διαφορές υπάρχουν μεταξύ τους.</p>
+                            </div>
+
+                            <!-- Panel 2 -->
+                            <div class="pkg-panel" role="tabpanel">
+                                <p class="pkg-name">Πακέτο 3 – Πλήρης καθοδήγηση πριν την υπογραφή</p>
+                                <p class="pkg-sub">Τι περιλαμβάνει:</p>
+                                <ul class="section-list">
+                                    <li>Όλα τα παραπάνω</li>
+                                    <li>Έλεγχος και ανάλυση σύμβασης</li>
+                                    <li>Λίστα σημείων που πρέπει να συμπεριληφθούν γραπτώς πριν την προκαταβολή</li>
+                                    <li>Τεχνικές οδηγίες για ασφαλή ολοκλήρωση διαδικασίας</li>
+                                    <li>Τηλεφωνική συζήτηση για πλήρη καθοδήγηση</li>
+                                </ul>
+                                <p class="pkg-value-label">Αξία για τον πελάτη:</p>
+                                <p class="pkg-value">Εξασφαλίζετε ότι η επιλογή σας είναι πλήρως τεκμηριωμένη, τεχνικά σωστή και οικονομικά ασφαλής πριν δεσμευτείτε.</p>
+                            </div>
+
+                        </div><!-- /.pkg-strip -->
+                    </div><!-- /.pkg-viewport -->
+
+                    <!-- Always-visible customer notes -->
+                    <div class="pkg-notes">
+                        <p class="pkg-notes__title">Σημείωση για τους πελάτες:</p>
+                        <ul class="section-list">
+                            <li>Η καθοδήγηση είναι ανεξάρτητη, χωρίς προώθηση εταιρειών</li>
+                            <li>Δεν επιδιώκω πώληση κουφωμάτων ή ποσοστά</li>
+                            <li>Κάθε αξιολόγηση βασίζεται αποκλειστικά στα τεχνικά δεδομένα και την εμπειρία του πεδίου</li>
+                            <li>Στόχος μου είναι να πάρετε μια απόφαση που θα σας αφήσει ήσυχους και μετά την ολοκλήρωση του έργου</li>
+                        </ul>
+                    </div>
+
                 </div>
             </section>
 
